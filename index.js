@@ -1,17 +1,15 @@
-class Timer {
-  constructor(inputDuration, pauseButton, startButton) {
-    this.inputDuration = inputDuration;
-    this.pauseButton = pauseButton;
-    this.startButton = startButton;
-
-    this.startButton.addEventListener("click", this.start);
-  }
-  start() {
-    console.log("Time to start the Timer");
-  }
-}
 const startButton = document.querySelector("#start");
 const inputDuration = document.querySelector("#inputDuration");
-const pauseButton = document.querySelector("#pauseButton");
+const pauseButton = document.querySelector("#pause");
 
-const timer = new Timer(inputDuration, pauseButton, startButton);
+const timer = new Timer(inputDuration, pauseButton, startButton, {
+  onStart() {
+    console.log("Timer Started");
+  },
+  onTick() {
+    console.log("Timer just ticked down");
+  },
+  onComplete() {
+    console.log("timer is completed");
+  }
+});
